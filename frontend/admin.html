@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Supremo Corte</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f4f2f2;
+    }
+    h1 {
+      text-align: center;
+    }
+    .categoria {
+      margin-bottom: 2rem;
+    }
+    .produto {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    input {
+      padding: 0.5rem;
+      width: 200px;
+    }
+    .btn {
+      background-color: rgb(103, 229, 103);
+      padding: 0.4rem 1rem;
+      margin-top: 0.5rem;
+    }
+    .salvar {
+      background: green;
+      color: white;
+      border: none;
+      font-size: 1rem;
+    }
+    .publicar {
+    background: blue;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    margin-left: 10px;
+  }
+
+  </style>
+</head>
+<body>
+
+  <h1>Painel Administrativo</h1>
+
+  <div id="oferta" class="categoria">
+    <h2>Ofertas da Semana</h2>
+  </div>
+
+  <div id="categorias"></div>
+
+  <button class="btn salvar" onclick="salvar()">Salvar Alterações</button>
+  <button class="btn publicar" onclick="publicar()">Publicar no Site</button>
+
+
+
+  <script src="admin.js"></script>
+</body>
+</html>

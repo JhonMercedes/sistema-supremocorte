@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--<meta http-equiv="refresh" content="10"> Recarrega a cada 60 segundos -->
+  <title>Supremo Corte</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="totem">
+    <!--<div class="oferta">
+      <h2>OFERTA DA SEMANA</h2>
+      <div class="oferta-img">
+        <img id="oferta-img" src="" alt="promocoes" />
+      </div>
+      <div class="oferta-desc">
+        <h3></h3>
+        <p class="preco"><span>kg</span></p>
+      </div>
+      <!-- QR Code -->
+    <!-- <div id="qrcode-fixo">
+        
+        <img src="./imagens/voteaqui.png" alt="QR Code" />
+      </div>
+    </div> -->
+
+    <div class="tabelas">
+      <div class="tabela-oferta">
+        <h2>OFERTAS DA SEMANA</h2>
+        <table id="tabela-oferta"></table>
+      </div>
+      <div class="tabela">
+        <h2>BOVINOS</h2>
+        <table id="tabela-bovinos"></table>
+      </div>
+      <div class="tabela">
+        <h2>BOVINOS</h2>
+        <table id="tabela-bovinos2"></table>
+      </div>
+      <div class="tabela">
+        <h2>AVES</h2>
+        <table id="tabela-aves"></table>
+      </div>
+      <div class="tabela">
+        <h2>SUINOS</h2>
+        <table id="tabela-suinos"></table>
+      </div>
+      
+    </div>
+  </div>
+
+
+<div class="logo-slide" style="display: none;">
+  <div class="logo-container">
+    <img src="./imagens/logo.png" alt="Logo da Empresa" class="logo-grande">
+    <div class="relogio">
+      <p id="data"></p>
+      <p id="hora"></p>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="script.js"></script>
+
+<button id="btn-fullscreen" onclick="alternarTelaCheia()">
+   <!-- Ãcone para entrar em tela cheia -->
+   <svg id="icone-entrar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
+    <path d="M7 14H5v5h5v-2H7v-3zm0-4h2V7h3V5H7v5zm10 0h-2V7h-3V5h5v5zm-2 4h2v3h-3v2h5v-5h-4z"/>
+  </svg>
+  <!-- Ãcone para sair da tela cheia -->
+  <svg id="icone-sair" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24" style="display: none;">
+    <path d="M16 14h2v5h-5v-2h3v-3zm-8 0H6v3h3v2H4v-5h4zm8-4h-3V7h-2v5h5V10zm-8 0H6V7h3V5H4v5h4z"/>
+  </svg>
+</button>
+
+</body>
+
+</html>
