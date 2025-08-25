@@ -1,0 +1,280 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Titillium Web", sans-serif;
+  text-transform: capitalize;
+}
+
+body {
+  background: #1a1a1a;
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Ocultar cursor */
+body.ocultar-cursor {
+  cursor: none;
+}
+
+
+.totem {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+}
+/* == TABELAS == */
+.tabelas {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  padding: 20px;
+  background: #1a1a1a;
+  align-items: stretch;
+}
+/* === OFERTA DA SEMANA === */
+.oferta {
+  flex: 1;
+  background: #e91d1d;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.2);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabela {
+  flex: 1;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabela-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding: 12px;
+  background: #FFE600;
+  color: #000;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.oferta .tabela-header {
+  background: #fff;
+  color: #d32f2f;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.categoria-icon {
+  font-size: 3rem;
+}
+
+
+.oferta h2 {
+  color: #d00000;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+.oferta-img {
+  background: transparent;
+  margin-top: 20px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  height: 350px; /* Altura fixa para manter a Ã¡rea constante */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Importante: evita vazamentos da imagem */
+}
+
+.oferta-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ð¥ Preenche 100% da div */
+  border-radius: 10px;
+}
+
+
+
+.oferta-desc {
+  margin-top: 10px;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  text-shadow: 2px 2px 2px #000;
+  text-align: center;
+  color: #fff;
+}
+
+.oferta-desc h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFF;
+  text-shadow: 2px 2px 2px #000;
+  margin-bottom: 8px;
+}
+
+
+.oferta-desc .preco {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #FFE600; /* Verde para o preÃ§o novo */
+  position: relative;
+}
+
+.tabela h2 {
+  text-align: center;
+  font-size: 2rem; /*1.6*/
+  margin-bottom: 10px;
+  background: #ffe600;
+  color: #000;
+  padding: 6px; /*8px*/
+  border-radius: 6px; /*8px*/
+}
+
+.tabela-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.5rem; /*1.3*/
+}
+
+td {
+  padding: 10px 5px;
+  border-bottom: 1px solid #444;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+td:first-child {
+  text-align: left;
+}
+
+td:last-child {
+  text-align: right;
+  color: #ffe600;
+  font-weight: bold;
+}
+
+/* === SLIDE LOGO === */
+.logo-slide {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo-slide.active {
+  display: flex;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-grande {
+  max-width: 90%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.relogio {
+  color: #333;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.relogio #data {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.relogio #hora {
+  color: #8b4513;
+  font-weight: 700;
+}
+
+#btn-fullscreen {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.3s ease;
+  opacity: 0.5;
+}
+
+#btn-fullscreen:hover {
+  opacity: 2;
+}
+
+#btn-fullscreen svg {
+  pointer-events: none;
+}
+
+#qrcode-fixo {
+  margin-top: auto;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: Arial, sans-serif;
+}
+
+#qrcode-fixo img {
+  width: 250px;
+  height: 250px;
+  background: transparent;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+}
