@@ -3,63 +3,348 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="16x16"  href="/frontend/imagens/painel-de-controle.png">
   <title>Admin - Supremo Corte</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      background: #f4f2f2;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+      min-height: 100vh;
+      padding: 20px;
+      color: #333;
     }
-    h1 {
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .header {
       text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    .categoria {
-      margin-bottom: 2rem;
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
     }
-    .produto {
+
+    .header p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .ofertas-section {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-left: 4px solid #e74c3c;
+    }
+
+    .categorias-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    .categorias-grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .categoria-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-left: 4px solid #ddd;
+    }
+
+    .categoria-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .categoria-header {
       display: flex;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #f1f2f6;
     }
-    input {
-      padding: 0.5rem;
-      width: 200px;
+
+    .categoria-header h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2c3e50;
     }
-    .btn {
-      background-color: rgb(103, 229, 103);
-      padding: 0.4rem 1rem;
-      margin-top: 0.5rem;
+
+    .produto-count {
+      background: #f8f9fa;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #666;
+      border: 1px solid #e9ecef;
     }
-    .salvar {
-      background: green;
+
+    /* Cores específicas para cada categoria */
+    .bovinos { border-left-color: #f39c12; }
+    .bovinos .categoria-header h2 { color: #f39c12; }
+
+    .bovinos2 { border-left-color: #e67e22; }
+    .bovinos2 .categoria-header h2 { color: #e67e22; }
+
+    .aves { border-left-color: #3498db; }
+    .aves .categoria-header h2 { color: #3498db; }
+
+    .suinos { border-left-color: #e74c3c; }
+    .suinos .categoria-header h2 { color: #e74c3c; }
+
+    .ofertas-section .categoria-header h2 { color: #e74c3c; }
+
+    .produto-item {
+      display: grid;
+      grid-template-columns: 1fr 120px 50px;
+      gap: 15px;
+      align-items: center;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      transition: all 0.2s ease;
+      border: 1px solid #e9ecef;
+    }
+
+    .produto-item:hover {
+      background: #e9ecef;
+    }
+
+    .produto-item input {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+      background: white;
+    }
+
+    .produto-item input:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+
+    .produto-item input[placeholder="Nome"] {
+      font-weight: 500;
+    }
+
+    .produto-item input[placeholder="Preço"] {
+      text-align: right;
+      font-weight: 600;
+      color: #28a745;
+    }
+
+    .btn-excluir {
+      
       color: white;
       border: none;
-      font-size: 1rem;
+      border-radius: 6px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
     }
-    .publicar {
-    background: blue;
-    color: white;
-    border: none;
-    font-size: 1rem;
-    margin-left: 10px;
-  }
 
+    .btn-excluir:hover {
+      background: #e46b77;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+    }
+
+    .btn-adicionar {
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    .btn-adicionar:hover {
+      background: #218838;
+      transform: translateY(-1px);
+    }
+
+    .actions-bar {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      margin-top: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-action {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-salvar {
+      background: #007bff;
+      color: white;
+    }
+
+    .btn-salvar:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    .btn-publicar {
+      background: #6f42c1;
+      color: white;
+    }
+
+    .btn-publicar:hover {
+      background: #5a2d91;
+      transform: translateY(-2px);
+    }
+
+    .btn-publicar:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .loading {
+      opacity: 0.7;
+    }
+
+    .loading::after {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid transparent;
+      border-top: 2px solid currentColor;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 8px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px;
+      color: #6c757d;
+    }
+
+    .empty-state p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .categorias-grid,
+      .categorias-grid-bottom {
+        grid-template-columns: 1fr;
+      }
+      
+      .produto-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      
+      .actions-bar {
+        flex-direction: column;
+      }
+      
+      .header h1 {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <div class="header">
+      <h1>🥩 Supremo Corte Admin</h1>
+      <p>Painel de Gerenciamento de Produtos e Preços</p>
+    </div>
 
-  <h1>Painel Administrativo</h1>
+    <div class="main-content">
+      <div class="ofertas-section">
+        <div class="categoria-header">
+          <h2>⭐ Ofertas da Semana</h2>
+          <div class="produto-count" id="oferta-count">0 produtos</div>
+        </div>
+        <div id="oferta" class="produtos-list"></div>
+      </div>
 
-  <div id="oferta" class="categoria">
-    <h2>Ofertas da Semana</h2>
+      <!-- Primeira linha: Bovinos Premium e Bovinos Tradicionais -->
+      <div class="categorias-grid" id="categorias"></div>
+
+      <!-- Segunda linha: Aves e Suínos -->
+      <div class="categorias-grid-bottom" id="categorias"></div>
+    </div>
+
+    <div class="actions-bar">
+      <button class="btn-action btn-salvar" onclick="salvar()" id="btn-salvar">
+        💾 Salvar Alterações
+      </button>
+      <button class="btn-action btn-publicar" onclick="publicar()" id="btn-publicar">
+        🚀 Publicar Site
+      </button>
+      <button class="btn-action btn-local" onclick="abrirLocal()" id="btn-local">
+        🌐 Supremo Corte Página Local
+      </button>
+    </div>
   </div>
-
-  <div id="categorias"></div>
-
-  <button class="btn salvar" onclick="salvar()">Salvar Alterações</button>
-  <button class="btn publicar" onclick="publicar()">Publicar no Site</button>
-
-
 
   <script src="admin.js"></script>
 </body>

@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: "Titillium Web", sans-serif;
   text-transform: capitalize;
+  text-transform: uppercase;
 }
 
 body {
@@ -25,60 +26,107 @@ body.ocultar-cursor {
   height: 100vh;
   width: 100vw;
 }
-
-/* === TABELAS === */
+/* == TABELAS == */
 .tabelas {
-  width: 100%;
+  flex: 1;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  /* align-items: flex-start; */
-  background: linear-gradient(to bottom, #1f1f1f, #000);
+  gap: 15px;
   padding: 20px;
-  gap: 20px;
+  background: #1a1a1a;
+  align-items: stretch;
 }
-
-.tabela-oferta {
-  width: 25%;
-  height: 100vh; /* ou altura fixa como 900px se preferir */
+/* === OFERTA DA SEMANA === */
+.oferta {
+  flex: 1;
+  background: #e91d1d;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.2);
+  border: none;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 20px;
-  
-  border-right: 4px solid #ffe600;
-  box-sizing: border-box;
 }
 
-.tabela-oferta h2 {
-  background: #d00000;
-  color: #fff;
+.oferta h2 {
+  color: #d00000;
   border-radius: 10px;
   padding: 10px;
   text-align: center;
-  font-size: 1.8em;
-  box-shadow: 0 0 10px #000;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.oferta td {
+  padding: 30px 15px;
+  border-bottom: 1px solid #ffffff23;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.oferta .preco {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #FFE600;
+  position: relative;
 }
 
 .tabela {
   flex: 1;
+  gap: 15px;
+  padding: 20px;
   background: rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  border-radius: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
   backdrop-filter: blur(4px);
-  box-shadow: 0 0 10px #000;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabela-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding: 12px;
+  background: #FFE600;
+  color: #000;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.oferta .tabela-header {
+  background: #fff;
+  color: #d32f2f;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.categoria-icon {
+  font-size: 3rem;
+  text-align: left;
 }
 
 .tabela h2 {
   text-align: center;
-  font-size: 1.5rem; /*1.6*/
+  font-size: 1.6rem; 
   margin-bottom: 10px;
   background: #ffe600;
   color: #000;
-  padding: 6px; /*8px*/
-  border-radius: 6px; /*8px*/
-  box-shadow: 0 2px 4px #000;
+  padding: 5px; /*8px*/
+  border-radius: 5px; /*8px*/
 }
+
+.tabela-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
 
 table {
   width: 100%;
@@ -89,19 +137,20 @@ table {
 td {
   padding: 10px 5px;
   border-bottom: 1px solid #444;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: 500;
 }
 
 td:first-child {
+  font-size: 1.4rem;
   text-align: left;
 }
 
 td:last-child {
   text-align: right;
   color: #ffe600;
-  font-weight: bold;
+  font-size: 1.6rem;
 }
 
 /* === SLIDE LOGO === */
@@ -137,9 +186,19 @@ td:last-child {
 }
 
 .relogio {
-  color: #fff;
+  color: #333;
   font-size: 3rem;
   text-align: center;
+}
+
+.relogio #data {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.relogio #hora {
+  color: #8b4513;
+  font-weight: 700;
 }
 
 #btn-fullscreen {
@@ -167,22 +226,4 @@ td:last-child {
 
 #btn-fullscreen svg {
   pointer-events: none;
-}
-
-#qrcode-fixo {
-  margin-top: auto;
-  text-align: center;
-  color: #fff;
-  font-size: 1.2rem;
-  font-family: Arial, sans-serif;
-}
-
-#qrcode-fixo img {
-  width: 250px;
-  height: 250px;
-  background: transparent;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  margin-top: 10px;
 }
