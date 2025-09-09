@@ -3,88 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" sizes="16x16"  href="/frontend/imagens/painel-de-controle.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/frontend/imagens/painel-de-controle.png">
   <title>Admin - Supremo Corte</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f8f9fa;
+      background: #f4f6f9;
       min-height: 100vh;
       padding: 20px;
       color: #333;
     }
 
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1400px; margin: 0 auto; }
 
     .header {
       text-align: center;
-      color: #333;
       margin-bottom: 30px;
-      background: white;
+      background: linear-gradient(135deg, #e2e6ea, #dcdfe3);
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
     }
-
     .header h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
       color: #2c3e50;
     }
+    .header p { font-size: 1.1rem; color: #666; }
 
-    .header p {
-      font-size: 1.1rem;
-      color: #666;
-    }
-
-    .main-content {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
+    .main-content { display: grid; grid-template-columns: 1fr; gap: 30px; }
 
     .ofertas-section {
-      background: white;
-      border-radius: 12px;
+      background: linear-gradient(135deg, #e2e6ea, #dcdfe3);
+      border-radius: 16px;
       padding: 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      border-left: 4px solid #e74c3c;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      border-left: 7px solid #e74c3c;
     }
 
-    .categorias-grid {
+    .categorias-grid, .categorias-grid-bottom {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 25px;
       margin-bottom: 25px;
     }
 
-    .categorias-grid-bottom {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
-    }
-
     .categoria-card {
-      background: white;
-      border-radius: 12px;
+      background: linear-gradient(135deg, #e2e6ea, #dcdfe3);
+      border-radius: 14px;
       padding: 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border-left: 4px solid #ddd;
+      border-left: 7px solid #ddd;
     }
-
     .categoria-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     }
 
     .categoria-header {
@@ -95,36 +71,27 @@
       padding-bottom: 15px;
       border-bottom: 2px solid #f1f2f6;
     }
-
-    .categoria-header h2 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #2c3e50;
-    }
+    .categoria-header h2 { font-size: 1.4rem; font-weight: 600; }
 
     .produto-count {
-      background: #f8f9fa;
+      background: #28a745;
       padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.9rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
       font-weight: 500;
-      color: #666;
+      color: #fff;
       border: 1px solid #e9ecef;
     }
 
-    /* Cores específicas para cada categoria */
+    /* cores das categorias */
     .bovinos { border-left-color: #f39c12; }
     .bovinos .categoria-header h2 { color: #f39c12; }
-
     .bovinos2 { border-left-color: #e67e22; }
     .bovinos2 .categoria-header h2 { color: #e67e22; }
-
     .aves { border-left-color: #3498db; }
     .aves .categoria-header h2 { color: #3498db; }
-
     .suinos { border-left-color: #e74c3c; }
     .suinos .categoria-header h2 { color: #e74c3c; }
-
     .ofertas-section .categoria-header h2 { color: #e74c3c; }
 
     .produto-item {
@@ -133,36 +100,27 @@
       gap: 15px;
       align-items: center;
       padding: 15px;
-      background: #f8f9fa;
+      background: #fdfdfd;
       border-radius: 8px;
       margin-bottom: 12px;
-      transition: all 0.2s ease;
+      transition: background 0.2s ease;
       border: 1px solid #e9ecef;
     }
-
-    .produto-item:hover {
-      background: #e9ecef;
-    }
+    .produto-item:hover { background: #f1f3f5; }
 
     .produto-item input {
       padding: 10px 12px;
       border: 1px solid #ddd;
       border-radius: 6px;
       font-size: 1rem;
-      transition: border-color 0.2s ease;
-      background: white;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
-
     .produto-item input:focus {
       outline: none;
       border-color: #007bff;
-      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+      box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
     }
-
-    .produto-item input[placeholder="Nome"] {
-      font-weight: 500;
-    }
-
+    .produto-item input[placeholder="Nome do produto"] { font-weight: 500; }
     .produto-item input[placeholder="Preço"] {
       text-align: right;
       font-weight: 600;
@@ -170,25 +128,19 @@
     }
 
     .btn-excluir {
-      
-      color: white;
       border: none;
+      background: transparent;
+      color: #888;
       border-radius: 6px;
-      padding: 10px 12px;
       cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 40px;
-      height: 40px;
+      font-size: 1.2rem;
+      transition: background 0.2s ease;
+      display: flex; align-items: center; justify-content: center;
+      min-width: 40px; height: 40px;
     }
-
     .btn-excluir:hover {
-      background: #e46b77;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+      background: #fdd;
+      color: #e74c3c;
     }
 
     .btn-adicionar {
@@ -204,24 +156,20 @@
       margin-top: 15px;
       width: 100%;
     }
-
-    .btn-adicionar:hover {
-      background: #218838;
-      transform: translateY(-1px);
-    }
+    .btn-adicionar:hover { background: #218838; transform: translateY(-1px); }
+    .btn-adicionar:active { transform: scale(0.98); }
 
     .actions-bar {
       background: white;
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 25px;
       margin-top: 30px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       display: flex;
       gap: 20px;
       justify-content: center;
-      align-items: center;
+      flex-wrap: wrap;
     }
-
     .btn-action {
       padding: 15px 30px;
       border: none;
@@ -231,87 +179,26 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
+    .btn-salvar { background: #007bff; color: white; }
+    .btn-salvar:hover { background: #0056b3; }
+    .btn-publicar { background: #6f42c1; color: white; }
+    .btn-publicar:hover { background: #5a2d91; }
+    .btn-publicar:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-local { background: #20c997; color: white; }
+    .btn-local:hover { background: #159a80; }
 
-    .btn-salvar {
-      background: #007bff;
-      color: white;
-    }
-
-    .btn-salvar:hover {
-      background: #0056b3;
-      transform: translateY(-2px);
-    }
-
-    .btn-publicar {
-      background: #6f42c1;
-      color: white;
-    }
-
-    .btn-publicar:hover {
-      background: #5a2d91;
-      transform: translateY(-2px);
-    }
-
-    .btn-publicar:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .loading {
-      opacity: 0.7;
-    }
-
-    .loading::after {
-      content: '';
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid transparent;
-      border-top: 2px solid currentColor;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-left: 8px;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .empty-state {
-      text-align: center;
-      padding: 40px;
-      color: #6c757d;
-    }
-
-    .empty-state p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
+    .empty-state { text-align: center; padding: 30px; color: #6c757d; }
 
     @media (max-width: 768px) {
-      .categorias-grid,
-      .categorias-grid-bottom {
-        grid-template-columns: 1fr;
-      }
-      
-      .produto-item {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-      
-      .actions-bar {
-        flex-direction: column;
-      }
-      
-      .header h1 {
-        font-size: 2rem;
-      }
+      .produto-item { grid-template-columns: 1fr; }
+      .actions-bar { flex-direction: column; }
+      .header h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    
     <div class="header">
       <h1>🥩 Supremo Corte Admin</h1>
       <p>Painel de Gerenciamento de Produtos e Preços</p>
@@ -320,32 +207,23 @@
     <div class="main-content">
       <div class="ofertas-section">
         <div class="categoria-header">
-          <h2>⭐ Ofertas da Semana</h2>
+          <h2>🏷️ Ofertas da Semana</h2>
           <div class="produto-count" id="oferta-count">0 produtos</div>
         </div>
         <div id="oferta" class="produtos-list"></div>
       </div>
 
-      <!-- Primeira linha: Bovinos Premium e Bovinos Tradicionais -->
       <div class="categorias-grid" id="categorias"></div>
-
-      <!-- Segunda linha: Aves e Suínos -->
-      <div class="categorias-grid-bottom" id="categorias"></div>
+      <div class="categorias-grid-bottom" id="categorias2"></div>
     </div>
 
     <div class="actions-bar">
-      <button class="btn-action btn-salvar" onclick="salvar()" id="btn-salvar">
-        💾 Salvar Alterações
-      </button>
-      <button class="btn-action btn-publicar" onclick="publicar()" id="btn-publicar">
-        🚀 Publicar Site
-      </button>
-      <button class="btn-action btn-local" onclick="abrirLocal()" id="btn-local">
-        🌐 Supremo Corte Página Local
-      </button>
+      <button class="btn-action btn-salvar" onclick="salvar()" id="btn-salvar">Salvar Alterações</button>
+      <button class="btn-action btn-publicar" onclick="publicar()" id="btn-publicar">Publicar Site</button>
+      <button class="btn-action btn-local" onclick="abrirLocal()" id="btn-local">Página Local</button>
     </div>
+    
   </div>
-
   <script src="admin.js"></script>
 </body>
 </html>
