@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Supremo Corte Admin</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f4f6f9, #dfe4ea);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .login-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .login-box h1 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .login-box p {
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .input-group label {
+      font-size: 0.9rem;
+      color: #555;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0,123,255,0.15);
+    }
+
+    .btn-login {
+      width: 100%;
+      background: #007bff;
+      color: white;
+      padding: 14px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn-login:hover { background: #0056b3; }
+    .btn-login:active { transform: scale(0.98); }
+
+    .error-msg {
+      color: #e74c3c;
+      margin-top: 15px;
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h1>🔒 Login</h1>
+    <p>Acesse o painel administrativo</p>
+
+    <div class="input-group">
+      <label for="username">Usuário</label>
+      <input type="text" id="username" placeholder="Digite seu usuário">
+    </div>
+
+    <div class="input-group">
+      <label for="password">Senha</label>
+      <input type="password" id="password" placeholder="Digite sua senha">
+    </div>
+
+    <button class="btn-login" onclick="login()">Entrar</button>
+    <p class="error-msg" id="error-msg">Usuário ou senha inválidos</p>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
